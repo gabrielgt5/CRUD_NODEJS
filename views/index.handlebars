@@ -1,0 +1,22 @@
+<h1 class=" ">Olá usuário</h1>
+
+
+<table>
+    <thead>
+        <tr>
+            <th>COD</th>
+            <th>Nome</th>
+            <th>Preço</th>
+        </tr>
+    </thead>
+    {{#each posts}}
+        <tbody>
+            <tr>
+                <td>{{id}}</td>
+                <td>{{nome_produto}}</td>
+                <td>{{valor}}</td>
+                <td><button>deletar</button></td>
+            </tr>
+        </tbody>
+    {{/each}}
+</table>

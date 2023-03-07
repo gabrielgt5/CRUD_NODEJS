@@ -28,8 +28,8 @@ const path = require('path')
        })
     })
 
-    app.get('/home', (req, res) => {
-        res.render('home')
+    app.get('/', (req, res) => {
+        res.render('/')
     })
 
     app.post('/add', (req, res) => {

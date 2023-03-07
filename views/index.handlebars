@@ -85,27 +85,30 @@
               <h5 class="h2 modal-title">Cadastre seu produto</h5>
               <button type="button" id="fechaModal" class="btn border  text-white bg-danger rounded-5 shadow-sm" data-dismiss="modal" aria-label="Close">X</button>
             </div>
-            <div class="modal-body">
 
-              <div class="mt-4">
-                <label for="code"><strong> Código do produto</strong></label>
-                <input class="form-control" name="code" id="code" type="number" placeholder="Insira o código do produto" aria-label="default input example">
-              </div>
-              
-              <div class="mt-4">
-                <label for="nome"><strong>Nome do produto</strong></label>
-                <input class="form-control" name="nome" id="nome" type="text" placeholder="Insira o nome do produto" aria-label="default input example">
-              </div>
+            <form action="/add" method="POST">
+                <div class="modal-body">
 
-              <div class="mt-4 mb-4">
-                <label for="prc"><strong>Preço do produto</strong></label>
-                <input class="form-control" name="prc" id="prc" type="number" placeholder="Insira o prseço do produto" aria-label="default input example">
-              </div>
+                <div class="mt-4">
+                    <label for="cod_produto"><strong> Código do produto</strong></label>
+                    <input class="form-control" name="cod_produto" id="cod_produto" type="number" placeholder="Insira o código do produto" aria-label="default input example">
+                </div>
+                
+                <div class="mt-4">
+                    <label for="nome_produto"><strong>Nome do produto</strong></label>
+                    <input class="form-control" name="nome_produto" id="nome_produto" type="text" placeholder="Insira o nome do produto" aria-label="default input example">
+                </div>
 
-            </div>
-            <div class="modal-footer w-100">
-              <button type="button" class="btn btn-primary  w-100 p-2 d-inline text-dark bg-primary-subtle border rounded-4 mx-3 d-block shadow-sm ">Adicionar produto</button>
-            </div>
+                <div class="mt-4 mb-4">
+                    <label for="preco_produto"><strong>Preço do produto</strong></label>
+                    <input class="form-control" name="preco_produto" id="preco_produto" type="number" placeholder="Insira o prseço do produto" aria-label="default input example">
+                </div>
+
+                </div>
+                <div class="modal-footer w-100">
+                <button type="submit" class="btn btn-primary  w-100 p-2 d-inline text-dark bg-primary-subtle border rounded-4 mx-3 d-block shadow-sm ">Adicionar produto</button>
+                </div>
+            </form>
           </div>
         </div>
       </div>

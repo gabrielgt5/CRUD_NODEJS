@@ -72,26 +72,44 @@ const path = require('path')
     });
    
     //Atualizar objeto BUGGGGGGGG - resolver
-    app.post('/:id', (req, res) =>{
-        Post.findOne({_id:req.params.id}).then((edit) => {
-            res.render('/', {edit: edit})
-        }).catch((err) => {
-            req.flash("error_msg", "não há nada aqui")
-            req.redirect('/')
-        })
-    })
+    
 
-    //Deletando 
-    app.post("/produto/deletar", (req, res) => {
-        Post.remove({_id: req.body.id}).then(() =>{
-            req.flash("success_msg", "Categoria Deletada com sucesso")
-            res.redirect('index')
-        }).catch((err) => {
-            req.flash("error_msg", "Houve um error ao deletar a categoria")
-            res.redirect('index')
-        })
+  //Deletando Registro
+  app.get('/:id',(req, res) => {
+    Post.destroy({where: {'id': req.params.id}}).then(() => {
+        res.redirect('/')
+    }).catch(() => {
+        res.send("Esta psotagem não existe")
     })
+  })
 
+
+  app.get('/edit/:id', function(req, res){
+    Post.findByPk(req.params.id)
+      .then(post => {
+        res.render('form-edit', {
+          id: req.params.cod_produto,
+          nome_produto: post.nome_produto,
+          valor: post.preco_produto
+        })
+      })
+      .catch(err => {
+        res.send('Post não encontrado!')
+      })
+  })
+  app.post('/editado/:id', function(req, res){
+    Post.update({
+      titulo: req.body.titulo,
+      conteudo: req.body.conteudo
+    },
+    {
+      where: { id: req.params.id }
+    }).then(function(){
+      res.redirect('/')
+    }).catch(function(err){
+      console.log(err);
+    })
+  })
 
 
 

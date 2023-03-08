@@ -99,11 +99,11 @@ const path = require('path')
   })
   app.post('/editado/:id', function(req, res){
     Post.update({
-      titulo: req.body.titulo,
-      conteudo: req.body.conteudo
+      nome_produto: req.body.nome_produto,
+      valor: req.body.preco_produto
     },
     {
-      where: { id: req.params.id }
+      where: {id: req.params.id }
     }).then(function(){
       res.redirect('/')
     }).catch(function(err){

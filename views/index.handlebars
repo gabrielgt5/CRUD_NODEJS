@@ -15,17 +15,18 @@
 
         
         <div class="row">
-            <div class="col-sm-8 mt-3">
-                <h1 class="fs-1 text-dark mx-3"><strong>Olá usuário</strong></h1>
-                <h3 class="fs-3 text-dark pt-3 mx-3 " >Bem-vindo ao Sistema CRUD</h3>
+            <div class="col-sm-8 mt-3 mb-1">
+                <h1 class="fs-1 text-dark  mx-4"><strong>Olá usuário</strong></h1>
+                <h3 class="fs-3 text-dark pt-3 mx-4 " >Bem-vindo ao Sistema CRUD</h3>
             </div>
 
-            <div class="col-sm-4 mt-1">
-                <!--<img src="/public/img/log.png" class="rounded float-end mx-3"  alt="logo interface">-->
+            <div class="col-sm-4">
+                
             </div>
         </div>
-        
-        <div class=" shadow-sm p-2 d-inline text-dark bg-danger-subtle  rounded-4 mx-3">
+     
+        <div class="shadow-sm p-2 d-inline text-dark bg-danger-subtle rounded-4 mx-4">
+           
             <strong>Gerenciamento de Produtos</strong> 
         </div>
 
@@ -68,8 +69,8 @@
                             <td>{{nome_produto}}</td>
                             <td>R${{valor}}</td>
                             <td>
-                              <form class="form-action"  method="get" >
-                                <button action="/edit/{{id}}" type="menu" class="btn btn-sm btn-primary d-inline text-dark bg-primary-subtle border rounded-4 shadow-sm" data-toggle="modal" data-target="#modalExemplo2">Editar</button>
+                              <form class="form-action" action="/edit/{{id}}"  method="get" >
+                                <button type="menu" class="btn btn-sm btn-primary d-inline text-dark bg-primary-subtle border rounded-4 shadow-sm">Editar</button>
                               </form>
                             </td>
                             <td>
@@ -113,7 +114,7 @@
 
                 <div class="mt-4 mb-4">
                     <label for="preco_produto"><strong>Preço do produto</strong></label>
-                    <input class="form-control" name="preco_produto" id="preco_produto" type="number" placeholder="Insira o prseço do produto" aria-label="default input example">
+                    <input class="form-control" name="preco_produto" id="preco_produto" type="string" placeholder="Insira o prseço do produto" aria-label="default input example">
                 </div>
 
                 </div>

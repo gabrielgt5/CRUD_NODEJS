@@ -43,23 +43,6 @@ const { get } = require('http');
 
     app.post('/add', (req, res) => {
 
-        
-        var erros = [];
-
-        if(!req.body.nome_produto && req.body.nome_produto == undefined || req.body.nome_produto == null){
-            erros.push({texto: "Nome inválido"})
-        }
-        if(!req.body.cod_produto && req.body.cod_produto == undefined || req.body.cod_produto == null){
-            erros.push({texto: "Por favor insira um código válido"})
-        }
-        if(!req.body.preco_produto && req.body.preco_produto == undefined || req.body.preco_produto == null){
-            erros.push({texto: "Por favor insira um preço"})
-        }
-
-        if(erros.length > 0){
-            res.render('/', {erros: erros})
-        }
-        
 
         Post.create({
             id: req.body.cod_produto,
@@ -74,6 +57,18 @@ const { get } = require('http');
    
   //Atualizar objeto BUGGGGGGGG - resolver
     //erros atrás de erros 
+   app.get('/form-edit/editar/:id', (req, res) => {
+    Post.findOne({id: req.params.id}).then((edite) => {
+        res.render('form-edit', {edite: edite})
+    }).catch((err) => {
+        res.send('Categoria não encontrada')
+        res.redirect('form-edit')
+    })
+    
+   })
+
+
+    //Post.where({_id: req.body.id}).update({nome:req.body.nome, slug:req.body.slug})
 
 
   //Deletando Registro

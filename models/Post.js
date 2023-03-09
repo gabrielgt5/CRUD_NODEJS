@@ -9,7 +9,7 @@ const Post = db.sequelize.define('produtos', {
         type: Sequelize.STRING
     },
     valor:{
-        type: Sequelize.STRING
+        type: Sequelize.INTEGER
     }
 });
 

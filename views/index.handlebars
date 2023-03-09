@@ -69,9 +69,7 @@
                             <td>{{nome_produto}}</td>
                             <td>R${{valor}}</td>
                             <td>
-                              <form class="form-action" action="/edit/{{id}}"  method="get" >
-                                <button type="menu" class="btn btn-sm btn-primary d-inline text-dark bg-primary-subtle border rounded-4 shadow-sm">Editar</button>
-                              </form>
+                              <a class="text-decoration-none" href="/edit/{{id}}"><button type="menu" class="btn btn-sm btn-primary d-inline text-dark bg-primary-subtle border rounded-4 shadow-sm">Editar</button></a>
                             </td>
                             <td>
                               <form class="form-action" action="/{{id}}" method="get">
@@ -97,8 +95,9 @@
 
             <form action="/add" method="POST">
                 <div class="modal-body">
+
                     {{#each erros}}
-                        <div class="alert alert-danger">{{texto}}</div>
+                        <div class="alert alert-danger mt-4">{{texto}}</div>
                     {{else}}
 
                     {{/each}}
@@ -114,7 +113,7 @@
 
                 <div class="mt-4 mb-4">
                     <label for="preco_produto"><strong>Preço do produto</strong></label>
-                    <input class="form-control" name="preco_produto" id="preco_produto" type="string" placeholder="Insira o prseço do produto" aria-label="default input example">
+                    <input class="form-control" name="preco_produto" id="preco_produto" type="number" placeholder="Insira o preço do produto" aria-label="default input example">
                 </div>
 
                 </div>

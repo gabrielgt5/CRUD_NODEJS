@@ -2,7 +2,8 @@ const express = require('express');
 const app = express();
 const exphbs  = require('express-handlebars');
 const Post = require('./models/Post')
-const path = require('path')
+const path = require('path');
+const { get } = require('http');
 
 
 
@@ -42,8 +43,8 @@ const path = require('path')
 
     app.post('/add', (req, res) => {
 
-        /*
-        var erros = []
+        
+        var erros = [];
 
         if(!req.body.nome_produto && req.body.nome_produto == undefined || req.body.nome_produto == null){
             erros.push({texto: "Nome inválido"})
@@ -58,7 +59,7 @@ const path = require('path')
         if(erros.length > 0){
             res.render('/', {erros: erros})
         }
-        */
+        
 
         Post.create({
             id: req.body.cod_produto,
@@ -71,45 +72,21 @@ const path = require('path')
         });
     });
    
-    //Atualizar objeto BUGGGGGGGG - resolver
-    
+  //Atualizar objeto BUGGGGGGGG - resolver
+    //erros atrás de erros 
+
 
   //Deletando Registro
-  app.get('/:id',(req, res) => {
+  app.get('/:id', (req, res) => {
     Post.destroy({where: {'id': req.params.id}}).then(() => {
         res.redirect('/')
     }).catch(() => {
-        res.send("Esta psotagem não existe")
+        res.send("Este produto não existe não existe")
     })
   })
 
 
-  app.get('/edit/:id', function(req, res){
-    Post.findByPk(req.params.id)
-      .then(post => {
-        res.render('form-edit', {
-          id: req.params.cod_produto,
-          nome_produto: post.nome_produto,
-          valor: post.preco_produto
-        })
-      })
-      .catch(err => {
-        res.send('Post não encontrado!')
-      })
-  })
-  app.post('/editado/:id', function(req, res){
-    Post.update({
-      nome_produto: req.body.nome_produto,
-      valor: req.body.preco_produto
-    },
-    {
-      where: {id: req.params.id }
-    }).then(function(){
-      res.redirect('/')
-    }).catch(function(err){
-      console.log(err);
-    })
-  })
+
 
 
 

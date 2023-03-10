@@ -34,20 +34,16 @@
 
             <div class="mt-3">
                 <button class="btn btn-primary p-2 d-inline text-dark bg-success-subtle border rounded-4 mx-3 d-block shadow-sm " data-toggle="modal" data-target="#modalExemplo" id="btn_add" ><!--<img src="/public/dist/Huge-icon2.svg" alt="icon de adionar">--> Adicionar Produtos</button>
-                
-                <form class="form-inline row mt-3 mx-1">
-                    <div class="col-sm-8"><input class="form-control mr-sm-2 rounded-4 shadow-sm" type="search" placeholder="Pesquisar" aria-label="Pesquisar"></div>
-                    <div class="col-sm-4"><button class="btn btn-outline-success my-2 my-sm-0 rounded-4 shadow-sm" type="submit">Pesquisar</button></div>
-                  </form>
 
                   <div class="dropdown mt-3 mx-3">
-                    <button class="p-1 btn btn-outline-dark rounded-3 dropdown-toggle btn-sm" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <button class="p-1 btn btn-outline-dark rounded-3 dropdown-toggle btn-sm" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       Classificar
                     </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                      <a class="dropdown-item" href="#">Classificar ordem crescente</a>
-                      <a class="dropdown-item" href="#">Classificar ordem decrescente</a>
-                    </div>
+                      <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="/asc">Classificar ordem crescente</a></li>
+                        <li><a class="dropdown-item" href="/desc">Classificar ordem decrescente</a></li>
+                    </ul>
+              
                   </div>
             </div>
             
@@ -69,7 +65,9 @@
                             <td>{{nome_produto}}</td>
                             <td>R${{valor}}</td>
                             <td>
-                              <a class="text-decoration-none" href="/form-edit/editar/{{id}}"><button class="btn btn-sm btn-primary d-inline text-dark bg-primary-subtle border rounded-4 shadow-sm">Editar</button></a>
+                              <form action="/form-edit/editar/{{id}}">
+                                <button class="btn btn-sm btn-primary d-inline text-dark bg-primary-subtle border rounded-4 shadow-sm" type="submit">Editar</button>
+                              </form>
                             </td>
                             <td>
                               <form class="form-action" action="/{{id}}" method="get">
@@ -112,8 +110,8 @@
                 </div>
 
                 <div class="mt-4 mb-4">
-                    <label for="preco_produto"><strong>Preço do produto</strong></label>
-                    <input class="form-control" name="preco_produto" id="preco_produto" type="number" placeholder="Insira o preço do produto" aria-label="default input example">
+                    <label for="valor"><strong>Preço do produto</strong></label>
+                    <input class="form-control" name="valor" id="valor" type="number" placeholder="Insira o preço do produto" aria-label="default input example">
                 </div>
 
                 </div>

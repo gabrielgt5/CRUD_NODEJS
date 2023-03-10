@@ -14,20 +14,22 @@
 
         
         
-        <div class="row">
-            <div class="col-sm-8 mt-3">
-                <h1 class="fs-1 text-dark mx-3"><strong>Olá usuário</strong></h1>
-                <h3 class="fs-3 text-dark pt-3 mx-3 " >Bem-vindo ao Sistema CRUD</h3>
+          <div class="row">
+            <div class="col-sm-8 mt-3 mb-1">
+                <h1 class="fs-1 text-dark  mx-4"><strong>Olá usuário</strong></h1>
+                <h3 class="fs-3 text-dark pt-3 mx-4 " >Bem-vindo ao Sistema CRUD</h3>
             </div>
 
-            <div class="col-sm-4 mt-1">
-                <!--<img src="/public/img/log.png" class="rounded float-end mx-3"  alt="logo interface">-->
+            <div class="col-sm-4">
+                
             </div>
         </div>
-        
-        <div class=" shadow-sm p-2 d-inline text-dark bg-danger-subtle  rounded-4 mx-3">
+     
+        <div class="shadow-sm p-2 d-inline text-dark bg-danger-subtle rounded-4 mx-4">
+           
             <strong>Gerenciamento de Produtos</strong> 
         </div>
+
 
         <div class="container mt-5 border rounded-4 mb-2"> 
 
@@ -46,11 +48,10 @@
                     
                         <tbody>
                             
-                            <form action="/edita" method="POST">
-                                <input type="hidden" name="id" value="{{edite.id}}">
+                            <form action="/atualizado/{{id}}" method="POST">
                                 <tr>
-                                    <td><input  class="form-control rounded-4 shadow-sm" name="nome_produto" id="nome_produto" type="text" value="{{edite.nome_produto}}"></td>
-                                    <td><input  class="form-control rounded-4 shadow-sm" name="preco_produto" id="preco_produto" type="number" value="{{edite.valor}}"></td>
+                                    <td><input  class="form-control rounded-4 shadow-sm" name="nome_produto" id="nome_produto" type="text" value="{{nome_produto}}"></td>
+                                    <td><input  class="form-control rounded-4 shadow-sm" name="valor" id="valor" type="number" value="{{valor}}"></td>
                                     <td>
                                         <button type="submit" class="btn btn-sm btn-primary d-inline text-dark bg-primary-subtle border rounded-4 shadow-sm">Aplicar Edição</button>
                                     </td>

@@ -1,88 +1,111 @@
-const express = require('express');
-const app = express();
-const exphbs  = require('express-handlebars');
-const Post = require('./models/Post')
-const path = require('path');
-const { get } = require('http');
+// Importando bibliotecas
+    const express = require('express');
+    const app = express();
+    const exphbs  = require('express-handlebars');
+    const Post = require('./models/Post')
+    const path = require('path');
+    const { get } = require('http');
 
+// CONFIGURAÇÃO
+    // Tamplete engine
+        var handle = exphbs.create({
+            defaultLayout: 'main'
+            });
+        
+        app.engine('handlebars', handle.engine);
+        app.set('view engine', 'handlebars');
 
-
-//config
-    //Tamplete engine
-    var handle = exphbs.create({
-        defaultLayout: 'main'
-        });
-    
-    app.engine('handlebars', handle.engine);
-    app.set('view engine', 'handlebars');
-    //Body-Parser
-    app.use(express.urlencoded({extended:false}))
-    app.use(express.json())
+    // Express
+        app.use(express.urlencoded({extended:false}))
+        app.use(express.json())
   
-    //Public
-    app.use(express.static(path.join(__dirname, "public")));
-
-    app.use((req, res, next) =>{
-        next()
-    })
-
-    //Tratando erros
- 
+    // Public
+        app.use(express.static(path.join(__dirname, "public")));
+        app.use((req, res, next) =>{
+            next()
+        })
 
 
-    //Rotas
-    app.get('/', (req, res) => {
-       Post.findAll().then(function(posts){
-        res.render('index', {posts: posts})
-       })
-    })
+// Rotas
+      
+    // Listando produtos na tela
+        app.get('/', (req, res) => {
+            Post.findAll().then(function(posts){
+                res.render('index', {posts: posts})
+            })
+        })
 
-    app.get('/', (req, res) => {
-        res.render('/')
-    })
-
-    app.post('/add', (req, res) => {
-
-
-        Post.create({
-            id: req.body.cod_produto,
-            nome_produto: req.body.nome_produto,
-            valor: req.body.preco_produto
-        }).then(function(){
-            res.redirect("/")
-        }).catch(function(err){
-            res.send("Houve um erro: " + err)
-        });
-    });
-   
-  //Atualizar objeto BUGGGGGGGG - resolver
-    //erros atrás de erros 
-   app.get('/form-edit/editar/:id', (req, res) => {
-    Post.findOne({id: req.params.id}).then((edite) => {
-        res.render('form-edit', {edite: edite})
-    }).catch((err) => {
-        res.send('Categoria não encontrada')
-        res.redirect('form-edit')
-    })
+    // Listando produtos por ordem acendente 
+        app.get('/asc', (req, res) => {
+            Post.findAll({order: [['id', 'ASC']]}).then((posts) => {
+            res.render('index', {posts: posts})
+            })
+        })
     
-   })
+    // Listando produtos por ordem acendente
+        app.get('/desc', (req, res) => {
+            Post.findAll({order: [['id', 'DESC']]}).then(function(posts){
+            res.render('index', {posts: posts})
+            })
+        })
+    
+    // Adiciona valores a tabela e ao banco de dados
+        app.get('/', (req, res) => {
+            res.render('/')
+        })
 
+        app.post('/add', (req, res) => {
 
-    //Post.where({_id: req.body.id}).update({nome:req.body.nome, slug:req.body.slug})
+            Post.create({
+                id: req.body.cod_produto,
+                nome_produto: req.body.nome_produto,
+                valor: req.body.valor
+            }).then(function(){
+                res.redirect("/")
+            }).catch(function(err){
+                res.send("Houve um erro: " + err)
+            });
+        });
+   
+    // Faz o Update nos registros
+ 
+        app.get('/form-edit/editar/:id', (req, res) => {
+            Post.findByPk(req.params.id).then(edite => {
+                res.render('form-edit', {
+                    id: req.params.id,
+                    nome_produto: edite.nome_produto,
+                    valor: edite.valor
+                })
+            }).catch((err => {
+                res.send('Categoria não encontrada', err)
+                res.redirect('form-edit')
+            }))
+        })
+  
+        app.post('/atualizado/:id',(req, res) => {
+            Post.update({
+                nome_produto: req.body.nome_produto,
+                valor: req.body.valor
+            },
+            {
+                where: {id: req.params.id}}).then(() => {
+                    res.redirect('/')
+                }).catch((err) => {
+                    console.log(err);
+                })
+            })
 
+        //Deletando Registro
+        app.get('/:id', (req, res) => {
+            Post.destroy({where: {id: req.params.id}}).then(() => {
+                res.redirect('/')
+            }).catch(() => {
+                res.send("Este produto não existe não existe")
+            })
+        })
 
-  //Deletando Registro
-  app.get('/:id', (req, res) => {
-    Post.destroy({where: {'id': req.params.id}}).then(() => {
-        res.redirect('/')
-    }).catch(() => {
-        res.send("Este produto não existe não existe")
-    })
-  })
-
-
-
-
-
-
-app.listen(8080);
+        //Console de conexão
+        const PORT = 8080;
+        app.listen(PORT,() => {
+        console.log("Servido funcionando!");
+        })

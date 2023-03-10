@@ -3,8 +3,7 @@ const db = require('./db')
 
 
 const Post = db.sequelize.define('produtos', {
-    
-    //atributos
+    //Atributos
     nome_produto: { 
         type: Sequelize.STRING
     },

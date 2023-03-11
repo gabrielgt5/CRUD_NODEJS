@@ -42,7 +42,7 @@
             })
         })
     
-    // Listando produtos por ordem acendente
+    // Listando produtos por ordem decrescente
         app.get('/desc', (req, res) => {
             Post.findAll({order: [['id', 'DESC']]}).then(function(posts){
             res.render('index', {posts: posts})
@@ -107,5 +107,5 @@
         //Console de conexão
         const PORT = 8080;
         app.listen(PORT,() => {
-        console.log("Servido funcionando!");
+        console.log("Servidor funcionando!");
         })

@@ -15,10 +15,10 @@ Antes de começar, verifique se você atendeu aos seguintes requisitos:
 Para usar <CRUD_NODEJS>, siga estas etapas:
 
 ```
-<1- Instale o NODE.JS em seu computador, 
+ 1- Instale o NODE.JS em seu computador, 
  2- Instale o MYSQL server e o MYSQL Workbench,
  3- Instale as dependências do projeto SEQUELIZE, BOOTSTRAP, HEANDLEBARS, EXPRESS, EXPRESS-HANDLEBARS
- >
+ 
 ```
 
 

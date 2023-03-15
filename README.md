@@ -49,7 +49,7 @@ Agradecemos às seguintes pessoas que contribuíram para este projeto:
       </a>
     </td>
     <td align="center">
-      <a href="#">
+      <a href="https://github.com/gabrielgt5">
         <img src="https://avatars.githubusercontent.com/u/69332675?s=400&u=31459ee527d187a0713939d2b34c5acbd20940ce&v=4" width="100px;" alt="Foto do Gabriel Lucas no GitHub"/><br>
         <sub>
           <b>Gabriel Lucas</b>
@@ -68,4 +68,4 @@ Quer fazer parte desse projeto? Clique [AQUI](CONTRIBUTING.md) e leia como contr
 
 Esse projeto está sob licença. Veja o arquivo [LICENÇA](LICENSE.md) para mais detalhes.
 
-[⬆ Voltar ao topo](#nome-do-projeto)<br>
+[⬆ Voltar ao topo](#CRUD_NODEJS)<br>
